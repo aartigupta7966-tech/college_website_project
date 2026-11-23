@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>User Registration Validation</title>
+
+<script type="text/javascript">
+    function validateForm() {
+
+        /* USERNAME VALIDATION */
+
+        var fname = document.f.fname.value;
+
+        var spchar = "!@#$%^&*()+=-[]\\';,./{}|\":<>?~";
+        var number = "0123456789";
+
+        if (fname.length < 6) {
+            alert("Username must be at least 6 characters");
+            return false;
+        }
+
+        for (var i = 0; i < fname.length; i++) {
+            if (spchar.indexOf(fname.charAt(i)) != -1) {
+                alert("Username should not contain special characters");
+                document.f.fname.value = "";
+                return false;
+            }
+        }
+
+        for (var i = 0; i < fname.length; i++) {
+            if (number.indexOf(fname.charAt(i)) != -1) {
+                alert("Username should not contain numbers");
+                document.f.fname.value = "";
+                return false;
+            }
+        }
+
+        /* PASSWORD VALIDATION */
+
+        var pw = document.f.pw.value;
+        var cpw = document.f.cpw.value;
+
+        if (pw.length < 6) {
+            alert("Password must be at least 6 characters");
+            return false;
+        }
+
+        if (pw != cpw) {
+            alert("Password and Confirm Password do not match");
+            return false;
+        }
+
+        alert("Registration Successful");
+        return true;
+    }
+</script>
+
+
+</head>
+
+<body>
+
+
+    <form name="f">
+
+        <h2>USER REGISTRATION VALIDATION</h2>
+
+        <table>
+
+            <tr>
+                <td align="right">Username:</td>
+                <td>
+                    <input type="text" name="fname" maxlength="20" size="30">
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">Password:</td>
+                <td>
+                    <input type="password" name="pw" maxlength="10" size="30">
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">Confirm Password:</td>
+                <td>
+                    <input type="password" name="cpw" maxlength="10" size="30">
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" value="SUBMIT" onclick="validateForm()">
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+
+
+
+
+</body>
+</html>
